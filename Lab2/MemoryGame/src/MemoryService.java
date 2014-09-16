@@ -22,7 +22,7 @@ public class MemoryService {
 	{
 		Random random = new Random();
 		char randomChar = 'e';
-		int [] hasBeenUsed = new int[gameSymbols.length];
+		int [] hasBeenUsed = new int[gameSymbols.length * 2];
 		int randomNumber;
 		Boolean addedNumber = false;
 
@@ -33,7 +33,7 @@ public class MemoryService {
 				addedNumber = false;
 				while(!addedNumber)
 				{
-					randomNumber = random.nextInt(gameBoard.length);
+					randomNumber = random.nextInt(gameBoard.length * 2);
 					if(hasBeenUsed[randomNumber] < 2)
 					{
 						//System.out.println(randomNumber);
