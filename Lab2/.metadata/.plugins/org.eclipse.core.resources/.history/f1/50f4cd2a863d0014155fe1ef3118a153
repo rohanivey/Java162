@@ -1,0 +1,141 @@
+import java.util.Random;
+
+public class MemoryService {
+	
+	
+	
+	char[][] gameBoard;
+	char[][] displayedGameBoard;
+	char[] gameSymbols = {'!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '='};
+	
+	MemoryService(int inputBoardSize)
+	{
+		gameBoard = new char[inputBoardSize][inputBoardSize];
+		RandomizeBoard();
+		
+	}
+	
+	public void RandomizeBoard()
+	{
+		Random random = new Random();
+		char randomChar = 'e';
+		int [] hasBeenUsed = new int[gameSymbols.length];
+		int randomNumber;
+		Boolean addedNumber = false;
+
+		for(int i=0; i < gameBoard.length; i++)
+		{
+			for(int j=0; j < gameBoard[i].length; j++)
+			{
+				addedNumber = false;
+				while(!addedNumber)
+				{
+					randomNumber = random.nextInt(gameBoard.length);
+					if(hasBeenUsed[randomNumber] < 2)
+					{
+						//System.out.println(randomNumber);
+						randomChar = gameSymbols[randomNumber];
+						hasBeenUsed[randomNumber]++;
+						addedNumber = true;
+					}
+				}
+				/*
+				switch(gameBoard.length)
+				{
+					case 2:
+						addedNumber = false;
+						while(!addedNumber)
+						{
+							randomNumber = random.nextInt(gameBoard.length);
+							if(hasBeenUsed[randomNumber] < 2)
+							{
+								//System.out.println(randomNumber);
+								randomChar = gameSymbols[randomNumber];
+								hasBeenUsed[randomNumber]++;
+								addedNumber = true;
+							}
+						}
+						break;
+					case 4:
+						addedNumber = false;
+						while(!addedNumber)
+						{
+							randomNumber = random.nextInt(gameBoard.length);
+							if(hasBeenUsed[randomNumber] < 2)
+							{
+								randomChar = gameSymbols[randomNumber];
+								hasBeenUsed[randomNumber]++;
+								addedNumber = true;
+							}
+						}
+						break;
+					case 6:
+						addedNumber = false;
+						while(!addedNumber)
+						{
+							randomNumber = random.nextInt(gameBoard.length);
+							if(hasBeenUsed[randomNumber] < 2)
+							{
+								randomChar = gameSymbols[randomNumber];
+								hasBeenUsed[randomNumber]++;
+								addedNumber = true;
+							}
+						}
+						break;
+				}*/
+				System.out.println(i);
+				System.out.println(j);
+				System.out.println(randomChar);
+				gameBoard[i][j]= randomChar;
+			}
+		}
+	}
+	
+	public String toString()
+	{
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0; i < gameBoard.length; i++)
+		{
+			int printI = i + 1;
+			sb.append("  " + printI);
+			
+		}
+		for(int i = 0; i < gameBoard.length; i++)
+		{
+			int printI = i + 1;
+			sb.append("\n" + printI + " ");
+			for(int j = 0; j < gameBoard[i].length; j++)
+			{
+				sb.append(gameBoard[i][j]);	
+			}
+			sb.append("\n");
+		}
+		sb.append("\n\n");
+		return sb.toString();
+		
+	}
+	
+	public void Reveal(int positionOne, int positionTwo)
+	{
+		
+	}
+	
+	public void Hide(int positionOne, int positionTwo)
+	{
+		
+	}
+	
+	public void Match(int positionOneX,int positionOneY,int positionTwoX,int positionTwoY)
+	{
+	
+    }
+	
+	public static void main(String args[])
+	{
+		MemoryService ms = new MemoryService(6);
+		System.out.println("\n\n\n" + ms);
+		System.out.println(ms.gameBoard[1][1]);
+		
+	}
+
+}
