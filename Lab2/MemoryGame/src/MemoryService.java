@@ -15,6 +15,9 @@ public class MemoryService {
 		
 	}
 	
+	
+	//This is the method to randomize the board. I have it set to print out the exact character and location
+	//at time of assigning the character
 	public void RandomizeBoard()
 	{
 		Random random = new Random();
@@ -39,6 +42,10 @@ public class MemoryService {
 						addedNumber = true;
 					}
 				}
+				
+				//This was my first go-through of switch/case before I realized the code I wrote was repetitive
+				//so I just shortened it above. I'm not 100% certain if I'll need it yet, so I'm keeping it here
+				//until final build
 				/*
 				switch(gameBoard.length)
 				{
@@ -91,6 +98,8 @@ public class MemoryService {
 		}
 	}
 	
+	//My toString override here is supposed to return the object in a nice preformatted grid setting
+	//I used string builder, because when you do a String with multiple +, it tends to convert it to that anyway.
 	public String toString()
 	{
 		StringBuilder sb = new StringBuilder();
@@ -133,8 +142,11 @@ public class MemoryService {
 	
     }
 	
+	//This is just temporary for testing purposes.
 	public static void main(String args[])
 	{
+		//Here is the object in question. If the arg passed is greater than 2, java loses its mind.
+		//Before that, it works beautifully
 		MemoryService ms = new MemoryService(4);
 		System.out.println("\n\n\n" + ms);
 		//System.out.println(ms.gameBoard[1][1]);
